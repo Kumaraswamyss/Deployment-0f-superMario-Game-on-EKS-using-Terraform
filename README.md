@@ -2,9 +2,9 @@
 Super mario the game which we will never forget so today we are going to deployed it on EKS using Terraform via aws ec2
 Prerequisite →
 
-    Only thing that you need is the aws account and also you need to know some basics of it
-    Than we configure Terraform inside an ec2 instance
-    we also need an IAM ec2 role that provide necessary permission to ec2
+Only thing that you need is the aws account and also you need to know some basics of it
+Than we configure Terraform inside an ec2 instance
+we also need an IAM ec2 role that provide necessary permission to ec2
 
 Completion steps →
 
@@ -24,7 +24,7 @@ Step 7 → Destroy all the Insrastructure
 Let’s do it
 Step 1 → Login and basics setup
 
-    login into your aws account as a root user
+login into your aws account as a root user
 
 2. Launch an EC2 instance with the following setting
 allow https,http and set a key pair
@@ -41,7 +41,7 @@ b. apt update -y
 Step 2 → Setup Docker ,Terraform ,aws cli , and Kubectl
 Setup Docker → click on me to know basics of docker
 
-    apt install docker.io
+apt install docker.io
 
 2. usermod -aG docker $USER # Replace with your username e.g ‘ubuntu’
 
@@ -73,7 +73,7 @@ Step 3 → IAM Role for EC2
 
 Why we need IAM role for EC2 → It is used by your ec2 instance to create EKS cluster and manage s3 bucket by applying this IAM role it gives the authenticity to your ec2 to do changes in aws account
 
-    on the search bar type IAM
+on the search bar type IAM
 
 2. click on Roles on the left side
 
@@ -88,8 +88,8 @@ Why we need IAM role for EC2 → It is used by your ec2 instance to create EKS c
 7. click on create role option and your IAM role is created
 Step 4 →Attach IAM role with your EC2
 
-    go to EC2 section
-    click on actions → security → modify IAM role option
+go to EC2 section
+click on actions → security → modify IAM role option
 
 3. choose the role from dropdown and click on update IAM role
 why we need IAM Role →
@@ -98,16 +98,16 @@ Imagine you have a robot (EC2 instance) that does tasks for you in a big factory
 
 Here’s where IAM (Identity and Access Management) comes in:
 
-    Robot Needs a Key to Enter Rooms: The IAM Role is like giving your robot a special key. This key allows the robot to enter specific rooms (access certain AWS services). Without this key, the robot can’t get in.
-    Different Keys for Different Robots: Each robot (EC2 instance) can have its own key (IAM Role) with specific permissions. So, one robot may have a key to enter the storage room (access S3), while another robot has a key to enter the database room (access DynamoDB).
-    No Need for Hardcoding Passwords: Using IAM Roles means you don’t have to hardcode passwords (access credentials) into the robot. It’s like not writing down passwords on the robot itself. The robot just uses its key when needed.
-    Easily Change Permissions: If you want to change what a robot can do, you just change the permissions on its key (IAM Role). No need to reprogram the robot or give it a new password; just update the permissions on its key.
-    Secure and Controlled Access: IAM Roles help keep things secure. You can control exactly what each robot is allowed to do. This way, if one robot is compromised or needs a different role, you can easily adjust its permissions without affecting others.
+Robot Needs a Key to Enter Rooms: The IAM Role is like giving your robot a special key. This key allows the robot to enter specific rooms (access certain AWS services). Without this key, the robot can’t get in.
+Different Keys for Different Robots: Each robot (EC2 instance) can have its own key (IAM Role) with specific permissions. So, one robot may have a key to enter the storage room (access S3), while another robot has a key to enter the database room (access DynamoDB).
+No Need for Hardcoding Passwords: Using IAM Roles means you don’t have to hardcode passwords (access credentials) into the robot. It’s like not writing down passwords on the robot itself. The robot just uses its key when needed.
+Easily Change Permissions: If you want to change what a robot can do, you just change the permissions on its key (IAM Role). No need to reprogram the robot or give it a new password; just update the permissions on its key.
+Secure and Controlled Access: IAM Roles help keep things secure. You can control exactly what each robot is allowed to do. This way, if one robot is compromised or needs a different role, you can easily adjust its permissions without affecting others.
 
 Now everything is done what we have to do is just throw and some commands and build our infrastructure using terraform to run super mario
 Step 5 → Building Infrastructure Using terraform
 
-    clone the github repo by →
+clone the github repo by →
 
 a. mkdir super_mario
 
@@ -125,7 +125,7 @@ Note →make sure to provide your bucket and region name in this file otherwise 
 
 NOW RUN →
 
-    terraform init
+1. terraform init
 
 When we run terraform init, it sets up your working area, downloads necessary plugins, and makes sure everything is in place so that you can start using Terraform to create, update, or manage your infrastructure. It's like getting all the tools and materials ready before you start building something amazing with your computer.
 
@@ -152,10 +152,10 @@ aws eks update-kubeconfig --name EKS_CLOUD --region us-east-1
 The command aws eks update-kubeconfig --name EKS_CLOUD --region us-east-1 is like telling our computer, "Hey, I'm using Amazon EKS (Elastic Kubernetes Service) in the 'us-east-1' region, and I want to connect to it. you could use your desired location
 Step 6 → Creation of deployment and service for EKS
 
-    change the directory where deployment and service files are stored use the command → cd ..
-    create the deployment
+change the directory where deployment and service files are stored use the command → cd ..
+create the deployment
 
-kubectl apply -f deployment.yaml 
+    kubectl apply -f deployment.yaml 
 
 deployment.yaml file is like a set of instructions that tells a computer system, "Hey, here's how you should run and manage a particular application " . It provides the necessary information for a computer system to deploy and manage a specific software application. It includes details like what the application is, how many copies of it should run, and other settings that help the system understand how to keep the application up and running smoothly.
 
